@@ -7,8 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
 </head>
-<body><body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
-    <div class="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-lg">
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-lg mt-8 mb-8">
         
         <h2 class="text-3xl font-semibold text-center mb-6 text-green-500">Registrate</h2>
         <form action="#" method="POST">
@@ -43,6 +43,12 @@
             <div class="mb-4">
                 <label for="program" class="block text-lg font-bold text-gray-300">Programa</label>
                 <select id="program" name="programlist" class="bg-gray-800 text-white p-2 rounded pr-40">
+                </select>   
+            </div>
+
+            <div class="mb-4">
+                <label for="description" class="block text-lg font-bold text-gray-300">Descripción</label>
+                <textarea id="description" name="description" placeholder="Introduce tu descripción" rows="5" class="w-full p-3 mt-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                 </select>   
             </div>
 
