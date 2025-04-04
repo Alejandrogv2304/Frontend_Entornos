@@ -6,7 +6,7 @@
     <title>Project-Hub</title>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-<body>
+<body class="bg-gray-50 dark:bg-gray-700">
     
 
 <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
@@ -44,6 +44,16 @@
     <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Bienvenido a <span class="text-blue-600 dark:text-blue-500">Project-Hub</span></h1>
 <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Donde encontrarás un espacio para compartir con la comunidad UIS tus proyectos.</p>
   </div>
+
+  <h1 class="text-2xl font-bold mb-4 text-center">Lista de Proyectos</h1>
+
+  <div class="flex justify-center">
+    <div id="project-list" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 place-items-center max-w-7xl"></div>
+  </div>
+  
+
+  <script src="js/projects.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
 </html>
