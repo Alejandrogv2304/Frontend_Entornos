@@ -8,25 +8,28 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         email: correo,
         password: contraseña
     };
+  
 
     try {
-        const response = await fetch("http://localhost:8080/api/users", {
+        const response = await fetch("http://localhost:8080/auth/login", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                
             },
             body: JSON.stringify(data)
         });
 
-        const result = await response.json();
+        const result = await response.text();
 
         if (response.ok) {
-            
+            localStorage.setItem("token", result); // Guarda el token en el navegador
             alert("Login exitoso");
-            window.location.href = "projects.html"; // Redirigir a otra página después del login
+            window.location.href = "projects.html";
         } else {
-            alert("Error: " + result.message);
+            alert("Error al iniciar sesión");
         }
+        
     } catch (error) {
         console.error("Error en la petición:", error);
         alert("Error al conectar con el servidor");
