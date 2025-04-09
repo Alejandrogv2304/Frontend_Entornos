@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./profile.css">
+    <link rel="stylesheet" href="./reset.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Función para alternar la visibilidad de la contraseña
+        function togglePassword() {
+                const passwordField = document.getElementById("password");
+                const toggleIcon = document.getElementById("toggle-icon");
+                if (passwordField.type === "password") {
+                    passwordField.type = "text";
+                    toggleIcon.src = "https://img.icons8.com/ios/50/ffffff/visible.png"; // Icono de ojo abierto
+                } else {
+                    passwordField.type = "password";
+                    toggleIcon.src = "https://img.icons8.com/ios/50/ffffff/invisible.png"; // Icono de ojo cerrado
+                }
+            }
+    
+            document.addEventListener("DOMContentLoaded", function() {
+            // Lista de programas
+            const data = ["Ingeniería de Sistemas", "Ingeniería de Petroleos", "Ingeniería Industrial", 
+                "Ingeniería Química", "Ingeniería Electrónica", "Ingeniería Mecánica", 
+                "Ingeniería Civil", "Ingeniería Ambiental", "Ingeniería Biomédica", 
+                "Ingeniería Eléctrica"];
+    
+            // Referencia al select
+            const programSelect = document.getElementById("program");
+    
+            // Llenar el select con las opciones
+            data.forEach(item => {
+                const option = document.createElement("option");
+                option.value = item;
+                option.textContent = item;
+                programSelect.appendChild(option);
+            });
+        });
+    </script>
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__logo">
+            <a href="./../../pages/projects/projects.html"><img src="./../../assets/logo_alterno.svg" alt="Logo" class="navbar__logo-image"></a>
+            <span><a href="./../../pages/projects/projects.html">Project-Hub</a></span>
+        </div>
+        <div class="navbar__links">
+            <ul>
+              <li><a href="./../projects/projects.html">Proyectos</a></li>
+              <li><a href="./../groups/groups.html">Grupos</a></li>
+              <li><a href="./../about/about.html">Contacto</a></li>
+              <li><a href="./../login/login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-resume">
+            <div class="profile-resume__info">
+                <h2>Adrian Torres <img src="./../../assets/logo_alterno.svg" alt="logo"></h2>
+                <ul>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>mail@mail.com
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>Ingenieria de Sistemas
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>Usuario desde: 2025
+                    </li>
+                </ul>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt vel blanditiis in dolor eveniet est ex, similique corporis quos fugit voluptates pariatur velit placeat magni iste labore tempora harum reprehenderit.</p>
+            </div>
+        </div>
+
+        <div class="edit-profile-form">
+            <form class="form">
+            <p class="title">Editar Perfil </p>
+            <p class="message">Actualiza tus datos según prefieras.</p>
+                <div class="flex">
+                <label>
+                    <input class="input" type="text" placeholder="" required="">
+                    <span>Nombre</span>
+                </label>
+
+                <label>
+                    <input class="input" type="text" placeholder="" required="">
+                    <span>Apellido</span>
+                </label>
+            </div>  
+                    
+            <label>
+                <input class="input" type="email" placeholder="" required="">
+                <span>Email</span>
+            </label> 
+                
+            <label>
+                <input class="input" type="password" placeholder="" required="">
+                <span>Contraseña</span>
+            </label>
+            <label>
+                <input class="input" type="password" placeholder="" required="">
+                <span>Confirmar contraseña</span>
+            </label>
+            <label>
+                <select id="program" placeholder="Cambiar programa" name="programlist" class="select bg-gray-800 text-white p-2 rounded pr-40">
+                    <option value="" selected disabled>Cambiar el programa</option>
+                </select>   
+            </label>
+            <label>
+                <textarea class="textarea" name="description" id="description"></textarea>
+            </label>
+            <button class="submit">Actualizar</button>
+        </form>
+        <div class="illustration-container">
+            <img class="babillito-editing" src="./../../assets/babillito_editing.png" alt="babillito">
+        </div>
+    </div>
+</div>
+    
+</body>
+</html>
