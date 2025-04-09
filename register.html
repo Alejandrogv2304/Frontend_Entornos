@@ -5,13 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project-Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      
+            // Función para alternar la visibilidad de la contraseña
+            function togglePassword() {
+                const passwordField = document.getElementById("password");
+                const toggleIcon = document.getElementById("toggle-icon");
+                if (passwordField.type === "password") {
+                    passwordField.type = "text";
+                    toggleIcon.src = "https://img.icons8.com/ios/50/ffffff/visible.png"; // Icono de ojo abierto
+                } else {
+                    passwordField.type = "password";
+                    toggleIcon.src = "https://img.icons8.com/ios/50/ffffff/invisible.png"; // Icono de ojo cerrado
+                }
+            }
     
+            document.addEventListener("DOMContentLoaded", function() {
+            // Lista de programas
+            const data = ["Ingeniería de Sistemas", "Ingeniería de Petroleos", "Ingeniería Industrial", 
+                "Ingeniería Química", "Ingeniería Electrónica", "Ingeniería Mecánica", 
+                "Ingeniería Civil", "Ingeniería Ambiental", "Ingeniería Biomédica", 
+                "Ingeniería Eléctrica"];
+    
+            // Referencia al select
+            const programSelect = document.getElementById("program");
+    
+            // Llenar el select con las opciones
+            data.forEach(item => {
+                const option = document.createElement("option");
+                option.value = item;
+                option.textContent = item;
+                programSelect.appendChild(option);
+            });
+        });
+    </script>
 </head>
-<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+<body class="bg-gradient-to-r from-gray-900 via-[#1BAA7D] to-gray-800 text-white flex items-center justify-center min-h-screen">
     <div class="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-lg mt-8 mb-8">
         
-        <h2 class="text-3xl font-semibold text-center mb-6 text-green-500">Registrate</h2>
-        <form action="#" method="POST">
+        <h2 class="text-3xl font-bold text-center mb-6 text-white">Registrate</h2>
+        <form id="registerForm">
  
             
             <div class="mb-4">
@@ -52,49 +85,18 @@
                 </select>   
             </div>
 
-            <button type="submit" class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4">
-                Iniciar Sesión
+            <button type="submit" class="w-full py-3 px-4 bg-[#1BAA7D]  hover:bg-[#1bc632] text-white font-bold rounded-md focus:outline-none focus:ring-2 focus:ring-[#1BAA7D] mb-4">
+                Registrarse
             </button>
         </form>
 
         <div class="text-center">
             <p class="text-sm text-gray-400">
-                ¿No tienes cuenta? <a href="/register" class="text-blue-500 hover:underline">Regístrate aquí</a>
+                ¿Ya tienes cuenta? <a href="/index.html" class="text-[#1bc632]  hover:underline">Inicia Sesión</a>
             </p>
         </div>
     </div>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Función para alternar la visibilidad de la contraseña
-        function togglePassword() {
-            const passwordField = document.getElementById("password");
-            const toggleIcon = document.getElementById("toggle-icon");
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                toggleIcon.src = "https://img.icons8.com/ios/50/ffffff/visible.png"; // Icono de ojo abierto
-            } else {
-                passwordField.type = "password";
-                toggleIcon.src = "https://img.icons8.com/ios/50/ffffff/invisible.png"; // Icono de ojo cerrado
-            }
-        }
-
-        // Lista de programas
-        const data = ["Ingeniería de Sistemas", "Ingeniería de Petroleos", "Ingeniería Industrial", 
-            "Ingeniería Química", "Ingeniería Electrónica", "Ingeniería Mecánica", 
-            "Ingeniería Civil", "Ingeniería Ambiental", "Ingeniería Biomédica", 
-            "Ingeniería Eléctrica"];
-
-        // Referencia al select
-        const programSelect = document.getElementById("program");
-
-        // Llenar el select con las opciones
-        data.forEach(item => {
-            const option = document.createElement("option");
-            option.value = item;
-            option.textContent = item;
-            programSelect.appendChild(option);
-        });
-    });
-</script>
+    
+    <script src="js/register.js"></script>
 </body>
 </html>
