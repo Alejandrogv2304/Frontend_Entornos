@@ -37,7 +37,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         if (response.ok) {
             
             alert("Registro exitoso");
-            window.location.href = "index.html"; // Redirigir al login después del registro
+            window.location.href = "../login/login.html"; // Redirigir al login después del registro
         } else {
             alert("Error: " + result.message);
         }
