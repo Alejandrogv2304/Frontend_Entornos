@@ -1,110 +1,160 @@
+import {token, userId} from './../../js/validateAuth.js';
+
 document.addEventListener("DOMContentLoaded", function () {
-  const container = document.getElementById("project-list");
-  const token = localStorage.getItem("token");
-
-  if (!token) {
-    container.innerHTML = `<p class="text-red-600 text-center">No autorizado. Por favor inicia sesión.</p>`;
-    return;
-  }
-
-  fetch("http://localhost:8080/api/projects", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
-    }
-  })
+    
+    fetch(`http://localhost:8080/api/users/${userId}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
+        }
+    })
     .then(res => {
-      if (!res.ok) throw new Error("No se pudo obtener la lista de proyectos.");
-      return res.json();
+        if (!res.ok) throw new Error("No se pudo obtener la información del usuario.");
+        return res.json();
     })
     .then(data => {
-      if (!Array.isArray(data) || data.length === 0) {
-        container.innerHTML = `<p class="text-gray-500 text-center">No hay proyectos disponibles.</p>`;
-        return;
-      }
+        if (!data) {
+            console.log('No user data found');
+            return;
+        }
 
-      data.forEach(project => {
-        const card = document.createElement("div");
-        card.className = "transform transition-transform duration-500 hover:scale-105 will-change-transform hover:-translate-y-1 max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6";
+        document.getElementById('firstName').value = data.firstName || '';
+        document.getElementById('lastName').value = data.lastName || '';
+        document.getElementById('email').value = data.email || '';
+        document.getElementById('program').value = data.program || '';
+        document.getElementById('description').value = data.description || '';
 
-        const wordLimit = 25;
-        const descriptionWords = project.description.split(" ");
-        const shouldTruncate = descriptionWords.length > wordLimit;
-        const shortDescription = shouldTruncate
-          ? descriptionWords.slice(0, wordLimit).join(" ") + "..."
-          : project.description;
-
-        card.innerHTML = `
-          <div class="p-6">
-            <div class="text-sm text-gray-500 mb-2">
-              <span class="font-medium">ID:</span> ${project.id}
-            </div>
-            <h2 class="text-2xl font-semibold text-gray-800 mb-2">${project.title}</h2>
-
-            <p class="text-gray-600 mb-2 description">
-              ${shortDescription}
-            </p>
-            ${
-              shouldTruncate
-                ? `<button class="text-blue-600 hover:underline text-sm toggle-btn" data-full="${project.description.replace(/"/g, '&quot;')}" data-short="${shortDescription}">Mostrar más</button>`
-                : ""
-            }
-
-            <div class="mb-4 mt-3">
-              <span class="font-medium text-gray-700">Repositorio:</span>
-              <a href="${project.repoLink}" class="text-blue-600 hover:underline break-all" target="_blank">
-                ${project.repoLink}
-              </a>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4 text-sm text-gray-700 mt-3">
-              <div>
-                <span class="font-medium">Grupo:</span> ${project.group.name}
-              </div>
-              <div>
-                <span class="font-medium">Líder:</span> ${project.group.leader.firstName} ${project.group.leader.lastName}
-              </div>
-              <div>
-                <span class="font-medium">Estado:</span>
-                <span class="inline-block px-2 py-0.5 rounded bg-yellow-200 text-yellow-800 font-semibold">
-                  ${project.status}
-                </span>
-              </div>
-              <div>
-                <span class="font-medium">Creado:</span> ${new Date(project.createdAt).toLocaleString()}
-              </div>
-              <div>
-                <span class="font-medium">Actualizado:</span> ${new Date(project.updatedAt).toLocaleString()}
-              </div>
-
-              <a href="/projects/${project.id}" class="col-span-2 inline-block bg-[#1BAA7D] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#1bc632] transition duration-300 text-center mt-2">
-                Ver más detalles
-              </a>
-            </div>
-          </div>
-        `;
-
-        container.appendChild(card);
-      });
-
-      // Funcionalidad de "Mostrar más / Mostrar menos"
-      document.querySelectorAll(".toggle-btn").forEach((btn) => {
-        const desc = btn.previousElementSibling;
-        const fullText = btn.dataset.full;
-        const shortText = btn.dataset.short;
-
-        let expanded = false;
-
-        btn.addEventListener("click", () => {
-          expanded = !expanded;
-          desc.textContent = expanded ? fullText : shortText;
-          btn.textContent = expanded ? "Mostrar menos" : "Mostrar más";
-        });
-      });
+        document.getElementById('resume-name').innerHTML = `${data.firstName} ${data.lastName} <img src="./../../assets/logo_alterno.svg" alt="logo">` || '';
+        document.getElementById('resume-email').textContent = data.email || '';
+        document.getElementById('resume-program').textContent = data.program || '';
+        document.getElementById('resume-description').textContent = data.description || '';
+        document.getElementById('resume-userSince').textContent = `Usuario desde: ${new Date(data.createdAt).getFullYear()}` || ''; // Assuming the backend sends `createdAt` field
+  
     })
     .catch(error => {
-      console.error("Error:", error);
-      container.innerHTML = `<p class="text-red-600 text-center">Error al cargar proyectos: ${error.message}</p>`;
+        console.error('Error:', error);
     });
 });
+
+document.getElementById('submitBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const program = document.getElementById('program').value;
+    const description = document.getElementById('description').value;
+    
+    const userData = {
+        id: userId, 
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        program: program,
+        description: description
+    };
+
+    console.log('Sending userData:', userData);
+
+    fetch(`http://localhost:8080/api/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(userData)
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Failed to update user');
+        }
+    })
+    .then(data => {
+        console.log('User updated:', data);
+        let errors = [];
+
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password') ? document.getElementById('password').value : '';
+        const confirmPassword = document.getElementById('confirmPassword') ? document.getElementById('confirmPassword').value : '';
+        const program = document.getElementById('program').value;
+        const description = document.getElementById('description').value;
+
+        if (firstName.trim() === "") {
+            errors.push("El nombre es obligatorio.");
+        }
+
+        if (lastName.trim() === "") {
+            errors.push("El apellido es obligatorio.");
+        }
+
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (email.trim() === "") {
+            errors.push("El correo electrónico es obligatorio.");
+        } else if (!emailRegex.test(email)) {
+            errors.push("El correo electrónico no es válido.");
+        }
+
+        if (password.trim() === "") {
+            errors.push("La contraseña es obligatoria.");
+        }
+
+        if (confirmPassword.trim() === "") {
+            errors.push("La confirmación de la contraseña es obligatoria.");
+        } else if (password !== confirmPassword) {
+            errors.push("Las contraseñas no coinciden.");
+        }
+
+        if (!program) {
+            errors.push("Selecciona un programa.");
+        }
+
+        if (description.trim() === "") {
+            errors.push("La descripción es obligatoria.");
+        }
+
+        const errorMessagesContainer = document.getElementById('errorMessages');
+        if (errors.length > 0) {
+            if (errorMessagesContainer) {
+                errorMessagesContainer.innerHTML = '';
+                const ul = document.createElement('ul');
+                errors.forEach(error => {
+                    const li = document.createElement('li');
+                    li.textContent = error;
+                    ul.appendChild(li);
+                });
+                errorMessagesContainer.appendChild(ul);
+            } else {
+                console.error("Error: 'errorMessages' container not found in the DOM.");
+            }
+            return; 
+        }
+
+        openSuccessModal();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+function openSuccessModal() {
+  const modal = document.getElementById('successModal');
+  modal.style.display = "block"; // Show the modal
+
+  document.getElementById('closeModalBtn').onclick = function () {
+      modal.style.display = "none";
+  }
+
+  // Close the modal when the user clicks anywhere outside of it
+  window.onclick = function (event) {
+      if (event.target === modal) {
+          modal.style.display = "none";
+      }
+  }
+}
