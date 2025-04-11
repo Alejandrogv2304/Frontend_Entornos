@@ -1,7 +1,6 @@
 // Define logout function globally
 
 function logout() {
-    console.log('salio');
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
 
@@ -20,6 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
             logout();
         });
     } else {
-        navbarLinks.innerHTML += `<li><a href="./../../index.html">Login</a></li>`;
+        navbarLinks.innerHTML += `<li><a href="./../index.html">Login</a></li>`;
     }
 });

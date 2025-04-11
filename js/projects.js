@@ -1,6 +1,7 @@
+import {token, userId} from './validateAuth.js';
+
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("project-list");
-  const token = localStorage.getItem("token");
 
   if (!token) {
     container.innerHTML = `<p class="text-red-600 text-center">No autorizado. Por favor inicia sesión.</p>`;
@@ -23,6 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
         container.innerHTML = `<p class="text-gray-500 text-center">No hay proyectos disponibles.</p>`;
         return;
       }
+
+      console.log(data);
 
       data.forEach(project => {
         const card = document.createElement("div");

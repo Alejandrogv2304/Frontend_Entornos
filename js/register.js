@@ -23,6 +23,8 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         description: description
     };
 
+
+
     try {
         const response = await fetch("http://localhost:8080/auth/register", {
             method: "POST",
@@ -37,7 +39,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         if (response.ok) {
             
             alert("Registro exitoso");
-            window.location.href = "index.html"; // Redirigir al login después del registro
+            window.location.href = "./../pages/index.html"; // Redirigir al login después del registro
         } else {
             alert("Error: " + result.message);
         }
