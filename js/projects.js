@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       data.forEach(project => {
         const card = document.createElement("div");
-        card.className = "transform flex justify-between transition-transform duration-500 hover:scale-105 will-change-transform hover:-translate-y-1 max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6 min-h-[420px]";
+        card.className = "transform flex justify-between transition-transform duration-500 hover:scale-105 will-change-transform hover:-translate-y-1 max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6 min-h-[440px]";
 
         const wordLimit = 25;
         const descriptionWords = project.description.split(" ");
