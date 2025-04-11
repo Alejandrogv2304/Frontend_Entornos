@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./creation_group.css">
+    <link rel="stylesheet" href="./../reset.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="./../../js/main.js"></script>
+    <script type="module" src="./../../js/validateAuth.js"></script>
+    <script type="module" src="./edit_group.js"></script>
+    <script type="module" src="./creation_group_front.js"></script>
+    <link rel="icon" href="./../../assets/logo_alterno.svg" type="image/svg+xml">
+    <title>Editar grupo</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__logo">
+            <a href="../../../pages/projects/projects.html"><img src="./../../assets/logo_alterno.svg" alt="Logo" class="navbar__logo-image"></a>
+            <span><a href="../../../pages/projects/projects.html">Project-Hub</a></span>
+        </div>
+        <div class="navbar__links">
+            <ul id="navbar__links-list">
+                <li class="dropdown">
+                    <a class="navbar__noHover" href="./../projects/projects.html">Proyectos</a>
+                    <ul class="dropdown__menu">
+                      <li><a href="./../../pages/projects/creation_project.html">Crear proyecto</a></li>
+                      <li><a href="./../../pages/projects/edit_project.html">Editar proyecto</a></li>
+                    </ul>
+                  </li>
+                  
+                  <li class="dropdown">
+                    <a class="navbar__noHover" href="./../group/creation_group.html">Grupos</a>
+                    <ul class="dropdown__menu">
+                      <li><a href="./../../pages/group/creation_group.html">Crear grupo</a></li>
+                      <li><a href="./../../pages/group/edit_group.html">Editar grupo</a></li>
+                    </ul>
+                  </li>
+              <li><a href="./../profile/profile.html">Perfil</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="edit-form">
+            <form class="form">
+            <p class="title">Editar un grupo</p>
+            <p class="message">Edita un grupo existente</p>
+                <label>
+                    <select id="selectEditGroup" name="selectEditGroup" class="select bg-gray-800 text-white p-2 rounded pr-40">
+                        <option value="" selected disabled>Seleccione el grupo que desea editar</option>
+                    </select>   
+                </label>
+                <div class="flex">
+                <label>
+                    <input id="groupName" class="input" type="text" placeholder="" required="">
+                    <span>Nombre del grupo</span>
+                </label>
+                </div> 
+                    <div class="item-list">
+                        <label>
+                            <select id="selectMembers" name="selectMembers" class="select bg-gray-800 text-white p-2 rounded pr-40">
+                                <option value="" selected disabled>Seleccione los integrantes del grupo</option>
+                            </select>   
+                        </label>
+                        <button id="addMemberBtn" class="btn bg-green-600 text-white p-2 rounded">Añadir miembro</button>
+                        <h3>Miembros seleccionados:</h3>
+                        <ul id="membersList"></ul>
+                      </div>
+            <button id="submitBtn" class="submit">Guardar los cambios</button>
+            <button id="deleteBtn" class="deleteBtn">Eliminar grupo</button>
+        </form>
+        <div class="illustration-container">
+            <img class="babillito-editing" src="./../../assets/babillito_groups.png" alt="babillito">
+        </div>
+    </div>
+    </div>
+</body>
+</html>

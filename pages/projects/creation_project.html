@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./creation_project.css">
+    <link rel="stylesheet" href="./../reset.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="../../js/main.js"></script>
+    <script type="module" src="../../js/validateAuth.js"></script>
+    <script type="module" src="./creation_project.js"></script>
+    <link rel="icon" href="./../../assets/logo_alterno.svg" type="image/svg+xml">
+    <title>Creación de proyecto</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar__logo">
+            <a href="../projects/projects.html"><img src="./../../assets/logo_alterno.svg" alt="Logo" class="navbar__logo-image"></a>
+            <span><a href="../projects/projects.html">Project-Hub</a></span>
+        </div>
+        <div class="navbar__links">
+            <ul id="navbar__links-list">
+                <li class="dropdown">
+                    <a class="navbar__noHover" href="./projects.html">Proyectos</a>
+                    <ul class="dropdown__menu">
+                      <li><a href="./creation_project.html">Crear proyecto</a></li>
+                      <li><a href="./edit_project.html">Editar proyecto</a></li>
+                    </ul>
+                  </li>
+                  
+                  <li class="dropdown">
+                    <a class="navbar__noHover" href="../group/creation_group.html">Grupos</a>
+                    <ul class="dropdown__menu">
+                      <li><a href="../group/creation_group.html">Crear grupo</a></li>
+                      <li><a href="../group/edit_group.html">Editar grupo</a></li>
+                    </ul>
+                  </li>
+              <li><a href="../profile/profile.html">Perfil</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="edit-form">
+            <form class="form">
+            <p class="title">Crear un nuevo proyecto</p>
+            <p class="message">Crea un nuevo proyecto para publicar.</p>
+                <div class="flex">
+                <label>
+                    <input id="projectTitle" class="input" type="text" placeholder="" required="">
+                    <span>Título del proyecto</span>
+                </label>
+                </div> 
+                <label>
+                    <textarea id="projectDescription" class="textarea" name="description" id="description" placeholder="Descripción del proyecto"></textarea>
+                </label>
+                <label>
+                    <input id="projectLinkRepo" class="input" type="text" placeholder="" required="">
+                    <span>Link al repositorio</span>
+                </label> 
+                    <div class="item-list">
+                        <label>
+                            <select id="selectGroup" name="selectGroup" class="select bg-gray-800 text-white p-2 rounded pr-40">
+                                <option value="" selected disabled>Seleccione el grupo que trabajará en el proyecto</option>
+                            </select>   
+                        </label>
+                        <label>
+                            <select id="selectStatus" name="selectStatus" class="select bg-gray-800 text-white p-2 rounded pr-40">
+                                <option value="" selected disabled>Seleccione el estado del proyecto</option>
+                                <option value="PENDING">PENDING</option>
+                                <option value="IN_PROGRESS">IN_PROGRESS</option>
+                                <option value="COMPLETED">COMPLETED</option>
+                                <option value="CANCELED">CANCELED</option>
+                            </select>   
+                        </label>
+                      </div>
+            <button id="submitBtn" class="submit">Crear proyecto</button>
+        </form>
+        <div class="illustration-container">
+            <img class="babillito-editing" src="./../../assets/babillito_computing.png" alt="babillito">
+        </div>
+    </div>
+    </div>
+</body>
+</html>
