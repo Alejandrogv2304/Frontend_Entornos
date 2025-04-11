@@ -25,7 +25,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         if (response.ok) {
             localStorage.setItem("token", result); // Guarda el token en el navegador
             alert("Login exitoso");
-            window.location.href = "projects.html";
+            window.location.href = "./../pages/projects/projects.html";
         } else {
             alert("Error al iniciar sesión");
         }

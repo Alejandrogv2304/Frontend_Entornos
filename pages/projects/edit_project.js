@@ -93,7 +93,7 @@ document.getElementById('selectEditProject').addEventListener('change', function
         
         proyectTitle.value = data?.title || "";
         proyectDescription.value = data?.description || "";
-        proyectRepo.value = data?.repo_link || "";
+        proyectRepo.value = data?.repoLink || "";
         proyectStatus.value = data?.status || "";
         proyectGroup.value = data?.group?.id || "";
     })
@@ -117,10 +117,11 @@ document.getElementById('submitBtn').addEventListener('click', function (e) {
         id: projectId,
         title: projectTitle,
         description: projectDescription,
-        repo_link: projectRepo,
+        repoLink: projectRepo,
         group: {id: projectGroup},
         status: projectStatus,
     };
+
     let leaderId = userId;
     fetch(`http://localhost:8080/api/projects`, {
         method: 'PUT',

@@ -149,12 +149,14 @@ function openSuccessModal() {
 
   document.getElementById('closeModalBtn').onclick = function () {
       modal.style.display = "none";
+      window.location.reload();
   }
 
   // Close the modal when the user clicks anywhere outside of it
   window.onclick = function (event) {
       if (event.target === modal) {
           modal.style.display = "none";
+          window.location.reload();
       }
   }
 }

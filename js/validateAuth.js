@@ -11,6 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
         token = parsedData.token;
         
     } else {
-        window.location.href = '/index.html';
+        window.location.href = './../landing.html';
         return;
     }});
